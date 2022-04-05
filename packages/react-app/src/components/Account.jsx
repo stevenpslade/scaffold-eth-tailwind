@@ -1,6 +1,5 @@
 import { Button } from "antd";
 import React from "react";
-import { useThemeSwitcher } from "react-css-theme-switcher";
 
 import Address from "./Address";
 import Balance from "./Balance";
@@ -56,7 +55,7 @@ export default function Account({
   blockExplorer,
   isContract,
 }) {
-  const { currentTheme } = useThemeSwitcher();
+  const currentTheme = window.localStorage.getItem("theme");
 
   const modalButtons = [];
   if (web3Modal) {
