@@ -11,7 +11,7 @@ const run = () => {
 };
 
 console.log("🔬 Watching Themes...");
-watch("./src/index.css", { recursive: true }, function (evt, name) {
+watch("./src/", { recursive: true }, function (evt, name) {
   console.log("%s changed.", name);
   run();
 });
