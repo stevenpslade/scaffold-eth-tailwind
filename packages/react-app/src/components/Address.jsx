@@ -1,11 +1,7 @@
-import { Skeleton, Typography } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import Blockies from "react-blockies";
 import { useLookupAddress } from "eth-hooks/dapps/ens";
-
-// changed value={address} to address={address}
-
-const { Text } = Typography;
+import { DocumentDuplicateIcon, CheckCircleIcon } from '@heroicons/react/outline';
 
 /** 
   ~ What it does? ~
@@ -33,13 +29,22 @@ const { Text } = Typography;
 const blockExplorerLink = (address, blockExplorer) => `${blockExplorer || "https://etherscan.io/"}address/${address}`;
 
 export default function Address(props) {
-  const currentTheme = window.localStorage.getItem("theme");
   const address = props.value || props.address;
   const ens = useLookupAddress(props.ensProvider, address);
   const ensSplit = ens && ens.split(".");
   const validEnsCheck = ensSplit && ensSplit[ensSplit.length - 1] === "eth";
   const etherscanLink = blockExplorerLink(address, props.blockExplorer);
   let displayAddress = address?.substr(0, 5) + "..." + address?.substr(-4);
+
+  const [addressCopied, setAddressCopied] = useState(false);
+
+  const copyAddress = () => {
+    navigator.clipboard.writeText(address);
+    setAddressCopied(true);
+    setTimeout(() => {
+      setAddressCopied(false);
+    }, 800);
+  }
 
   if (validEnsCheck) {
     displayAddress = ens;
@@ -51,57 +56,55 @@ export default function Address(props) {
 
   if (!address) {
     return (
-      <span>
-        <Skeleton avatar paragraph={{ rows: 1 }} />
-      </span>
+      <div class="animate-pulse flex space-x-4">
+        <div class="rounded-md bg-slate-300 h-6 w-6"></div>
+        <div class="flex items-center space-y-6">
+          <div class="h-2 w-28 bg-slate-300 rounded"></div>
+        </div>
+      </div>
     );
   }
 
   if (props.minimized) {
     return (
-      <span style={{ verticalAlign: "middle" }}>
         <a
-          style={{ color: currentTheme === "light" ? "#222222" : "#ddd" }}
           target="_blank"
           href={etherscanLink}
           rel="noopener noreferrer"
         >
-          <Blockies seed={address.toLowerCase()} size={8} scale={2} />
+          <Blockies
+            className="inline rounded-md"
+            size={8}
+            scale={2}
+            seed={address.toLowerCase()}
+          />
         </a>
-      </span>
     );
   }
 
   return (
-    <span>
-      <span style={{ verticalAlign: "middle" }}>
-        <Blockies seed={address.toLowerCase()} size={8} scale={props.fontSize ? props.fontSize / 7 : 4} />
-      </span>
-      <span style={{ verticalAlign: "middle", paddingLeft: 5, fontSize: props.fontSize ? props.fontSize : 28 }}>
-        {props.onChange ? (
-          <Text editable={{ onChange: props.onChange }} copyable={{ text: address }}>
-            <a
-              style={{ color: currentTheme === "light" ? "#222222" : "#ddd" }}
-              target="_blank"
-              href={etherscanLink}
-              rel="noopener noreferrer"
-            >
-              {displayAddress}
-            </a>
-          </Text>
-        ) : (
-          <Text copyable={{ text: address }}>
-            <a
-              style={{ color: currentTheme === "light" ? "#222222" : "#ddd" }}
-              target="_blank"
-              href={etherscanLink}
-              rel="noopener noreferrer"
-            >
-              {displayAddress}
-            </a>
-          </Text>
-        )}
-      </span>
-    </span>
+    <div className="flex items-center justify-center">
+      <div className="flex-shrink-0">
+        <Blockies
+          className="mx-auto rounded-md"
+          size={6}
+          seed={address.toLowerCase()}
+          scale={props.fontSize ? props.fontSize / 7 : 4}
+        />
+      </div>
+      <a className="ml-2 text-xl font-normal text-gray-900" target="_blank" href={etherscanLink} rel="noopener noreferrer">
+        {displayAddress}
+      </a>
+      {addressCopied
+        ?
+          <CheckCircleIcon className="ml-1.5 text-xl font-normal text-sky-600 h-6 w-6 cursor-pointer" aria-hidden="true" />
+        :
+          <DocumentDuplicateIcon
+            className="ml-1.5 text-xl font-normal text-sky-600 h-6 w-6 cursor-pointer"
+            aria-hidden="true"
+            onClick={copyAddress}
+          />
+      }
+    </div>
   );
 }
