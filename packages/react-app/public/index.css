@@ -483,8 +483,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-2 {
   margin-top: 0.5rem;
 }
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.ml-1\.5 {
+  margin-left: 0.375rem;
+}
 .block {
   display: block;
+}
+.inline {
+  display: inline;
 }
 .flex {
   display: flex;
@@ -582,6 +591,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .cursor-pointer {
   cursor: pointer;
 }
+.select-none {
+  -webkit-user-select: none;
+          user-select: none;
+}
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -631,6 +647,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
+.border-transparent {
+  border-color: transparent;
+}
 .bg-gray-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
@@ -642,6 +661,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 .bg-slate-300 {
   --tw-bg-opacity: 1;
@@ -662,13 +689,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 .pt-5 {
   padding-top: 1.25rem;
@@ -678,6 +713,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pt-2 {
   padding-top: 0.5rem;
+}
+.pl-3\.5 {
+  padding-left: 0.875rem;
+}
+.pl-3 {
+  padding-left: 0.75rem;
 }
 .text-base {
   font-size: 1rem;
@@ -709,6 +750,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .italic {
   font-style: italic;
+}
+.leading-4 {
+  line-height: 1rem;
 }
 .tracking-tight {
   letter-spacing: -0.025em;
@@ -744,10 +788,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(2 132 199 / var(--tw-text-opacity));
 }
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
-}
 .opacity-0 {
   opacity: 0;
 }
@@ -757,6 +797,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-lg {
@@ -830,6 +875,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.hover\:border-slate-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+}
+
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -838,6 +888,11 @@ code {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.focus\:border-slate-400:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
 .focus\:outline-none:focus {
@@ -863,10 +918,6 @@ code {
 .focus\:ring-indigo-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
-}
-
-.focus\:ring-offset-2:focus {
-  --tw-ring-offset-width: 2px;
 }
 
 .group:hover .group-hover\:text-gray-500 {
@@ -897,18 +948,6 @@ code {
     margin-left: 1.5rem;
   }
 
-  .md\:ml-2 {
-    margin-left: 0.5rem;
-  }
-
-  .md\:ml-1\.5 {
-    margin-left: 0.375rem;
-  }
-
-  .md\:ml-1 {
-    margin-left: 0.25rem;
-  }
-
   .md\:flex {
     display: flex;
   }
@@ -921,20 +960,8 @@ code {
     width: 16rem;
   }
 
-  .md\:flex-shrink-0 {
-    flex-shrink: 0;
-  }
-
   .md\:flex-col {
     flex-direction: column;
-  }
-
-  .md\:items-center {
-    align-items: center;
-  }
-
-  .md\:justify-center {
-    justify-content: center;
   }
 
   .md\:px-8 {

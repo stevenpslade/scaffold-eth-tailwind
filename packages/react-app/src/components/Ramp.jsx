@@ -52,17 +52,10 @@ export default function Ramp(props) {
   }
 
   return (
-    <div>
-      <Button
-        size="large"
-        shape="round"
-        onClick={() => {
-          setModalUp("up");
-        }}
-      >
-        <DollarCircleOutlined style={{ color: "#52c41a" }} />{" "}
-        {typeof props.price === "undefined" ? 0 : props.price.toFixed(2)}
-      </Button>
+    <>
+      <span onClick={ () => setModalUp("up") } className="cursor-pointer inline-flex items-center px-3 py-0.5 rounded-full text-base font-normal bg-gray-100 text-gray-800">
+        🤑 ${typeof props.price === "undefined" ? 0 : props.price.toFixed(2)}
+      </span>
       <Modal
         title="Buy ETH"
         visible={modalUp === "up"}
@@ -146,6 +139,6 @@ export default function Ramp(props) {
 
         {allFaucets}
       </Modal>
-    </div>
+    </>
   );
 }

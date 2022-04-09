@@ -26,11 +26,11 @@ import { NETWORKS, ALCHEMY_KEY } from "./constants";
 import externalContracts from "./contracts/external_contracts";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
-import { Transactor, Web3ModalSetup } from "./helpers";
+import { Transactor, Web3ModalSetup, classNames } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 
-import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react';
 import {
   HomeIcon,
   MenuAlt2Icon,
@@ -40,7 +40,7 @@ import {
   SparklesIcon,
   CurrencyDollarIcon,
   ShareIcon,
-} from '@heroicons/react/outline'
+} from '@heroicons/react/outline';
 
 const { ethers } = require("ethers");
 /*
@@ -256,10 +256,6 @@ function App(props) {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const classNames = (...classes) => {
-    return classes.filter(Boolean).join(' ');
-  }
-
   const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon },
     { name: 'Debug Contracts', href: '/debug', icon: CodeIcon },
@@ -268,13 +264,6 @@ function App(props) {
     { name: 'Mainnet DAI', href: '/mainnetdai', icon: CurrencyDollarIcon },
     { name: 'Subgraph', href: '/subgraph', icon: ShareIcon },
   ];
-
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
-  ];
-  
 
   return (
     <>
@@ -397,6 +386,7 @@ function App(props) {
           </div>
         </div>
         <div className="md:pl-64 flex flex-col flex-1">
+          {/* Top nav */}
           <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
             <button
               type="button"
@@ -406,59 +396,19 @@ function App(props) {
               <span className="sr-only">Open sidebar</span>
               <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
             </button>
-            <div className="flex-1 px-4 flex justify-between">
-              <div className="flex-1 flex">
-                {/* search bar was here */}
-              </div>
-              <div className="ml-4 flex items-center md:ml-6">
-                {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
-                  <div>
-                    <Menu.Button className="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      <span className="sr-only">Open user menu</span>
-                      <Account
-                        useBurner={USE_BURNER_WALLET}
-                        address={address}
-                        localProvider={localProvider}
-                        userSigner={userSigner}
-                        mainnetProvider={mainnetProvider}
-                        price={price}
-                        web3Modal={web3Modal}
-                        loadWeb3Modal={loadWeb3Modal}
-                        logoutOfWeb3Modal={logoutOfWeb3Modal}
-                        blockExplorer={blockExplorer}
-                      />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {userNavigation.map((item) => (
-                        <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <a
-                              href={item.href}
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
-                              )}
-                            >
-                              {item.name}
-                            </a>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
+            <div className="flex-1 px-4 flex flex-row-reverse justify-between">
+              <Account
+                useBurner={USE_BURNER_WALLET}
+                address={address}
+                localProvider={localProvider}
+                userSigner={userSigner}
+                mainnetProvider={mainnetProvider}
+                price={price}
+                web3Modal={web3Modal}
+                loadWeb3Modal={loadWeb3Modal}
+                logoutOfWeb3Modal={logoutOfWeb3Modal}
+                blockExplorer={blockExplorer}
+              />
             </div>
           </div>
 
@@ -543,6 +493,19 @@ function App(props) {
               </div>
             </div>
           </main>
+        </div>
+        {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
+        <div className="absolute bottom-6 right-6 space-x-2">
+          <Ramp price={price} address={address} networks={NETWORKS} />
+          <GasGauge gasPrice={gasPrice} />
+          <a href='https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA' className="inline-flex items-center px-3 py-0.5 rounded-full text-base font-normal bg-gray-100 text-gray-800">
+            💬 Support
+          </a>
+          
+          {/* if the local provider has a signer, let's show the faucet: */}
+          {faucetAvailable && (
+            <Faucet localProvider={localProvider} price={price} ensProvider={mainnetProvider} />
+          )}
         </div>
       </div>
     </>

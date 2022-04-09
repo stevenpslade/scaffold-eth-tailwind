@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useBalance } from "eth-hooks";
+import { classNames } from "../helpers";
 
 const { utils } = require("ethers");
 
@@ -45,7 +46,7 @@ export default function Balance(props) {
     floatBalance = parseFloat(etherBalance);
   }
 
-  let displayBalance = floatBalance.toFixed(4);
+  let displayBalance = "Ξ" + floatBalance.toFixed(4);
 
   const price = props.price || props.dollarMultiplier || 1;
 
@@ -55,12 +56,10 @@ export default function Balance(props) {
 
   return (
     <span
-      style={{
-        verticalAlign: "middle",
-        fontSize: props.size ? props.size : 24,
-        padding: 8,
-        cursor: "pointer",
-      }}
+      className={classNames(
+        props.textSize ? props.textSize : 'text-2xl',
+        'cursor-pointer px-2 align-middle'
+      )}
       onClick={() => {
         setDollarMode(!dollarMode);
       }}

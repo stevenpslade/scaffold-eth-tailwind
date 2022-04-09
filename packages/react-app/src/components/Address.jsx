@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Blockies from "react-blockies";
 import { useLookupAddress } from "eth-hooks/dapps/ens";
 import { DocumentDuplicateIcon, CheckCircleIcon } from '@heroicons/react/outline';
+import { blockExplorerLink } from "../helpers";
 
 /** 
   ~ What it does? ~
@@ -26,8 +27,6 @@ import { DocumentDuplicateIcon, CheckCircleIcon } from '@heroicons/react/outline
   - Provide fontSize={fontSize} to change the size of address text
 **/
 
-const blockExplorerLink = (address, blockExplorer) => `${blockExplorer || "https://etherscan.io/"}address/${address}`;
-
 export default function Address(props) {
   const address = props.value || props.address;
   const ens = useLookupAddress(props.ensProvider, address);
@@ -38,7 +37,8 @@ export default function Address(props) {
 
   const [addressCopied, setAddressCopied] = useState(false);
 
-  const copyAddress = () => {
+  const copyAddress = (e) => {
+    e.stopPropagation();
     navigator.clipboard.writeText(address);
     setAddressCopied(true);
     setTimeout(() => {
@@ -87,20 +87,27 @@ export default function Address(props) {
       <div className="flex-shrink-0">
         <Blockies
           className="mx-auto rounded-md"
-          size={6}
+          size={5}
           seed={address.toLowerCase()}
           scale={props.fontSize ? props.fontSize / 7 : 4}
         />
       </div>
-      <a className="ml-2 text-xl font-normal text-gray-900" target="_blank" href={etherscanLink} rel="noopener noreferrer">
-        {displayAddress}
-      </a>
+      {props.disableAddressLink
+        ?
+          <span className="ml-1.5 text-lg font-normal text-gray-900">
+            {displayAddress}
+          </span>
+        :
+          <a className="ml-1.5 text-lg font-normal text-gray-900" target="_blank" href={etherscanLink} rel="noopener noreferrer">
+            {displayAddress}
+          </a>
+      }
       {addressCopied
         ?
-          <CheckCircleIcon className="ml-1.5 text-xl font-normal text-sky-600 h-6 w-6 cursor-pointer" aria-hidden="true" />
+          <CheckCircleIcon className="ml-1.5 text-xl font-normal text-sky-600 h-5 w-5 cursor-pointer" aria-hidden="true" />
         :
           <DocumentDuplicateIcon
-            className="ml-1.5 text-xl font-normal text-sky-600 h-6 w-6 cursor-pointer"
+            className="ml-1.5 text-xl font-normal text-sky-600 h-5 w-5 cursor-pointer"
             aria-hidden="true"
             onClick={copyAddress}
           />
