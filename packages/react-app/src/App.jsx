@@ -533,6 +533,10 @@ function App(props) {
             targetNetwork={targetNetwork}
             USE_NETWORK_SELECTOR={USE_NETWORK_SELECTOR}
           />
+          
+          {yourLocalBalance.lte(ethers.BigNumber.from("0")) && (
+            <FaucetHint localProvider={localProvider} targetNetwork={targetNetwork} address={address} />
+          )}
         </div>
       </div>
     </>

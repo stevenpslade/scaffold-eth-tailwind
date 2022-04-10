@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import { useBalance, useGasPrice } from "eth-hooks";
@@ -28,20 +27,19 @@ function FaucetHint({ localProvider, targetNetwork, address }) {
     ethers.utils.formatEther(yourLocalBalance) <= 0
   ) {
     faucetHint = (
-      <div style={{ padding: 16, display: "inline-flex" }}>
-        <Button
-          type="primary"
-          onClick={() => {
-            faucetTx({
-              to: address,
-              value: ethers.utils.parseEther("0.01"),
-            });
-            setFaucetClicked(true);
-          }}
-        >
-          💰 Grab funds from the faucet ⛽️
-        </Button>
-      </div>
+      <button
+        type="button"
+        className="pointer-events-auto bg-teal-400 inline-flex items-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-teal-900 bg-white hover:bg-teal-300"
+        onClick={() => {
+          faucetTx({
+            to: address,
+            value: ethers.utils.parseEther("0.01"),
+          });
+          setFaucetClicked(true);
+        }}
+      >
+        💰 Grab funds from the faucet ⛽️
+      </button>
     );
   }
 
