@@ -519,6 +519,22 @@ function App(props) {
           )}
         </div>
       </div>
+      {/* Global notification live region, render this permanently at the end of the document */}
+      <div
+        aria-live="assertive"
+        className="fixed inset-0 flex items-start px-4 pt-20 pb-6 pointer-events-none"
+      >
+        <div className="w-full flex flex-col items-end space-y-4">
+          {/* Alert if wrong network is selected */}
+          <NetworkDisplay
+            NETWORKCHECK={NETWORKCHECK}
+            localChainId={localChainId}
+            selectedChainId={selectedChainId}
+            targetNetwork={targetNetwork}
+            USE_NETWORK_SELECTOR={USE_NETWORK_SELECTOR}
+          />
+        </div>
+      </div>
     </>
   );
 }
