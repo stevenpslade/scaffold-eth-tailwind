@@ -65,12 +65,6 @@ export default function Faucet(props) {
     blockie = <IdentificationIcon className="h-4 w-4 text-gray-400" aria-hidden="true" />;
   }
 
-  const updateAddress = newValue => {
-    if (typeof newValue !== "undefined" && utils.isAddress(newValue)) {
-      setAddress(newValue);
-    }
-  };
-
   const tx = Transactor(localProvider);
 
   return (
@@ -80,15 +74,15 @@ export default function Faucet(props) {
           {blockie}
         </div>
         <input
-          className="block w-full rounded-none rounded-l-md pl-8 sm:text-sm border border-gray-300"
+          className="block w-full rounded-none rounded-l-md pl-8 sm:text-sm border border-gray-300 focus:outline-none dark:text-white dark:bg-gray-900 dark:border-gray-700 focus:outline-none"
           placeholder={placeholder ? placeholder : "Local Faucet"}
           value={address}
-          onChange={e => updateAddress(e.target.value)}
+          onChange={e => setAddress(e.target.value)}
         />
       </div>
       <button
         type="button"
-        className="-ml-px relative inline-flex items-center px-2.5 py-2 border border-gray-300 text-sm font-medium text-gray-700 bg-gray-50 hover:bg-gray-100"
+        className="-ml-px relative inline-flex items-center px-2.5 py-2 border border-gray-300 text-sm font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800"
         onClick={() => {
           tx({
             to: address,
@@ -101,7 +95,7 @@ export default function Faucet(props) {
       </button>
       <button
         type="button"
-        className="-ml-px relative inline-flex items-center px-2.5 py-2 border border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100"
+        className="-ml-px relative inline-flex items-center px-2.5 py-2 border border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800"
         onClick={ () => setWalletOpen(true) }
       >
         <ArrowsExpandIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />

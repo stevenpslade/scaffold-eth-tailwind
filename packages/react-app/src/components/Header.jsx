@@ -6,11 +6,11 @@ export default function Header({link, title, subTitle}) {
   return (
     <div>
       <a href={link} target="_blank" rel="noopener noreferrer">
-        <h2 className="text-2xl font-semibold tracking-tight text-gray-900">
+        <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {title}
         </h2>
       </a>
-      <p className="text-sm font-normal italic text-gray-500 tracking-wide">
+      <p className="text-sm font-normal italic text-gray-500 dark:text-slate-100 tracking-wide">
         {subTitle}
       </p>
     </div>

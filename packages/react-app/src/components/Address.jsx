@@ -94,11 +94,11 @@ export default function Address(props) {
       </div>
       {props.disableAddressLink
         ?
-          <span className="ml-1.5 text-lg font-normal text-gray-900">
+          <span className="ml-1.5 text-lg font-normal text-gray-900 dark:text-white">
             {displayAddress}
           </span>
         :
-          <a className="ml-1.5 text-lg font-normal text-gray-900" target="_blank" href={etherscanLink} rel="noopener noreferrer">
+          <a className="ml-1.5 text-lg font-normal text-gray-900 dark:text-white" target="_blank" href={etherscanLink} rel="noopener noreferrer">
             {displayAddress}
           </a>
       }

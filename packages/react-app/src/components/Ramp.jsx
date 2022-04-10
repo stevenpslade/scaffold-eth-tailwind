@@ -53,7 +53,7 @@ export default function Ramp(props) {
 
   return (
     <>
-      <span onClick={ () => setModalUp("up") } className="cursor-pointer inline-flex items-center px-3 py-0.5 rounded-full text-base font-normal bg-gray-100 text-gray-800">
+      <span onClick={ () => setModalUp("up") } className="cursor-pointer inline-flex items-center px-3 py-0.5 rounded-full text-base font-normal bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
         🤑 ${typeof props.price === "undefined" ? 0 : props.price.toFixed(2)}
       </span>
       <Modal
