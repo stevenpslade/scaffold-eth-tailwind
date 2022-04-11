@@ -69,7 +69,7 @@ const initialNetwork = NETWORKS.localhost; // <------- select your target fronte
 const DEBUG = true;
 const NETWORKCHECK = true;
 const USE_BURNER_WALLET = true; // toggle burner wallet feature
-const USE_NETWORK_SELECTOR = false;
+const USE_NETWORK_SELECTOR = true;
 
 const web3Modal = Web3ModalSetup();
 
@@ -406,7 +406,14 @@ function App(props) {
               <span className="sr-only">Open sidebar</span>
               <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
             </button>
-            <div className="flex-1 px-4 flex flex-row-reverse justify-between">
+            <div className="flex-1 px-4 flex flex-row justify-end">
+              {USE_NETWORK_SELECTOR && (
+                <NetworkSwitch
+                  networkOptions={networkOptions}
+                  selectedNetwork={selectedNetwork}
+                  setSelectedNetwork={setSelectedNetwork}
+                />
+              )}
               <Account
                 useBurner={USE_BURNER_WALLET}
                 address={address}
@@ -531,7 +538,6 @@ function App(props) {
             localChainId={localChainId}
             selectedChainId={selectedChainId}
             targetNetwork={targetNetwork}
-            USE_NETWORK_SELECTOR={USE_NETWORK_SELECTOR}
           />
           
           {yourLocalBalance.lte(ethers.BigNumber.from("0")) && (

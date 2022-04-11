@@ -69,7 +69,7 @@ export default function Account({
   }
 
   return (
-    <div className="ml-4 flex items-center md:ml-6">
+    <div className="flex items-center">
       <Menu as="div" className="ml-3 relative">
         <div className="flex items-center inline-flex items-center pl-3.5 border border-transparent select-none text-sm text-gray-900 leading-4 font-normal rounded-full shadow-sm bg-slate-200 dark:bg-neutral-900 dark:text-white">
           <Balance address={address} provider={localProvider} price={price} textSize='text-lg' />
