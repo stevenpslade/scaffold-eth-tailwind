@@ -130,7 +130,7 @@ export default function WalletModal(props) {
       }
 
       display = (
-        <div>
+        <div className="dark:text-white">
           <b>Private Key: </b>
           <span className="break-all">
             {pk}
@@ -146,7 +146,7 @@ export default function WalletModal(props) {
             }
           </span>
 
-          <hr />
+          <hr className="dark:border-gray-700" />
 
           <i>
             Point your camera phone at qr code to open in{" "}
@@ -164,7 +164,7 @@ export default function WalletModal(props) {
           </div>
           {extraPkDisplay ? (
             <div>
-              <h3>Known Private Keys:</h3>
+              <h3 className="dark:text-white">Known Private Keys:</h3>
               {extraPkDisplay}
               <button
                 type="button"
@@ -271,11 +271,11 @@ export default function WalletModal(props) {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="relative inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-52 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+            <div className="relative inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-52 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
               <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
                 <button
                   type="button"
-                  className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none"
+                  className="bg-white dark:bg-gray-800 rounded-md text-gray-400 hover:text-gray-500 dark:hover:text-white focus:outline-none"
                   onClick={() => setOpen(false)}
                 >
                   <span className="sr-only">Close</span>
@@ -294,7 +294,7 @@ export default function WalletModal(props) {
                   {/* Tab List */}
                   <div>
                     <div className="block">
-                      <div className="border-b border-gray-200">
+                      <div className="border-b border-gray-200 dark:border-gray-700">
                         <nav className="-mb-px flex space-x-8" aria-label="Tabs">
                           {tabs.map((tab) => (
                             <span
@@ -303,7 +303,7 @@ export default function WalletModal(props) {
                               className={classNames(
                                 tab.current
                                   ? 'border-sky-500 text-sky-600'
-                                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                                  : 'border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white hover:border-gray-300',
                                 'cursor-pointer whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm'
                               )}
                               aria-current={tab.current ? 'page' : undefined}
