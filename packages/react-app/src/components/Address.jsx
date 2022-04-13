@@ -54,6 +54,7 @@ export default function Address(props) {
     displayAddress = address;
   }
 
+  // Skeleton UI
   if (!address) {
     return (
       <div class="animate-pulse flex space-x-4">
@@ -83,7 +84,7 @@ export default function Address(props) {
   }
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center">
       <div className="flex-shrink-0">
         <Blockies
           className="mx-auto rounded-md"

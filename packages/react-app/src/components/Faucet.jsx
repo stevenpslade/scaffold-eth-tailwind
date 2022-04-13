@@ -1,7 +1,5 @@
-import { Button, Input, Tooltip } from "antd";
 import React, { useState, useEffect } from "react";
 import Blockies from "react-blockies";
-import { SendOutlined } from "@ant-design/icons";
 import { Transactor } from "../helpers";
 import WalletModal from "./WalletModal";
 

@@ -29,7 +29,7 @@ function FaucetHint({ localProvider, targetNetwork, address }) {
     faucetHint = (
       <button
         type="button"
-        className="pointer-events-auto bg-teal-400 inline-flex items-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-teal-900 bg-white hover:bg-teal-300"
+        className="pointer-events-auto bg-sky-400 inline-flex items-center px-4 py-2 shadow-sm text-sm font-medium rounded-md text-sky-900 bg-white hover:bg-sky-300"
         onClick={() => {
           faucetTx({
             to: address,
