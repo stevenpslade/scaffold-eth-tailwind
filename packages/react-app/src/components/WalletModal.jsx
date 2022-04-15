@@ -20,11 +20,14 @@ import EtherInput from "./EtherInput";
 
   ~ How can I use? ~
 
-  <Wallet
-    provider={userProvider}
+  <WalletModal
     address={address}
+    provider={localProvider}
+    signer={userSigner}
     ensProvider={mainnetProvider}
     price={price}
+    open={walletOpen}
+    setOpen={setWalletOpen}
   />
 
   ~ Features ~
