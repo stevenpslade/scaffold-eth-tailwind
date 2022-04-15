@@ -247,7 +247,7 @@ export default function WalletModal(props) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen}>
-        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="flex items-start justify-center min-h-screen pt-20 px-4 pb-4 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -261,7 +261,7 @@ export default function WalletModal(props) {
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="hidden sm:inline-block sm:align-top sm:h-screen" aria-hidden="true">
+          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
             &#8203;
           </span>
           <Transition.Child
@@ -273,7 +273,7 @@ export default function WalletModal(props) {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="relative inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-visible shadow-xl transform transition-all sm:my-52 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+            <div className="relative inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-visible shadow-xl transform transition-all w-full sm:my-8 sm:align-middle sm:max-w-lg sm:p-6">
               <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
                 <button
                   type="button"
@@ -286,7 +286,7 @@ export default function WalletModal(props) {
               </div>
               <div className="">
                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <Dialog.Title as="h3" className="flex text-lg leading-6 font-normal text-gray-900">
+                  <Dialog.Title as="h3" className="flex justify-center sm:justify-start text-lg leading-6 font-normal text-gray-900">
                     <Address address={selectedAddress} ensProvider={props.ensProvider} />
                     <span className="inline-flex items-center ml-2 px-2 py-0.5 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
                       <Balance address={selectedAddress} provider={props.provider} dollarMultiplier={props.price} textSize={'text-lg'} />
@@ -297,7 +297,7 @@ export default function WalletModal(props) {
                   <div>
                     <div className="block">
                       <div className="border-b border-gray-200 dark:border-gray-700">
-                        <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+                        <nav className="-mb-px flex justify-center sm:justify-start space-x-8" aria-label="Tabs">
                           {tabs.map((tab) => (
                             <span
                               key={tab.name}

@@ -1,4 +1,3 @@
-import { Badge, Input } from "antd";
 import React, { useCallback, useState } from "react";
 import { ethers } from "ethers";
 import { useLookupAddress } from "eth-hooks/dapps/ens";
@@ -111,6 +110,7 @@ export default function AddressInput(props) {
           <QrReader
             style={{ width: "100%" }}
             videoStyle={{ height: 'auto', borderRadius: '0.5rem' }}
+            constraints={{ facingMode: 'environment' }}
             onResult={(result, error) => {
               if (!!result) {
                 const newValue = result?.text;

@@ -987,9 +987,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pt-4 {
   padding-top: 1rem;
 }
-.pb-20 {
-  padding-bottom: 5rem;
-}
 .pr-4 {
   padding-right: 1rem;
 }
@@ -1394,11 +1391,6 @@ code {
     margin-bottom: 2rem;
   }
 
-  .sm\:my-52 {
-    margin-top: 13rem;
-    margin-bottom: 13rem;
-  }
-
   .sm\:mt-0 {
     margin-top: 0px;
   }
@@ -1478,6 +1470,10 @@ code {
     align-items: flex-start;
   }
 
+  .sm\:justify-start {
+    justify-content: flex-start;
+  }
+
   .sm\:p-0 {
     padding: 0px;
   }
@@ -1493,10 +1489,6 @@ code {
 
   .sm\:text-left {
     text-align: left;
-  }
-
-  .sm\:align-top {
-    vertical-align: top;
   }
 
   .sm\:align-middle {

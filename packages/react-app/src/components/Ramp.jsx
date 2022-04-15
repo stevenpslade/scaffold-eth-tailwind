@@ -84,7 +84,7 @@ export default function Ramp(props) {
       {/* Modal */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen}>
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div className="flex items-start justify-center min-h-screen pt-20 px-4 pb-4 text-center sm:block sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -126,11 +126,11 @@ export default function Ramp(props) {
                     <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900 dark:text-white">
                       Buy ETH
                     </Dialog.Title>
-                    <div className="my-2 flex flex-wrap">
+                    <div className="my-2 flex flex-wrap justify-center sm:justify-start">
                       {ethOptionButtons}
                     </div>
                     <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Testnet ETH</h3>
-                    <div className="mt-2 flex flex-wrap">
+                    <div className="mt-2 flex flex-wrap justify-center sm:justify-start">
                       {allFaucets}
                     </div>
                   </div>
