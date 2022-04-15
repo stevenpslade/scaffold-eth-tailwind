@@ -10,7 +10,9 @@ export default function ThemeSwitcher() {
   const theme = window.localStorage.getItem("theme");
   const [isDarkMode, setIsDarkMode] = useState(!(!theme || theme === "light"));
 
-  if (theme === "dark" || (!('theme' in window.localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  // Add the following to this conditional if you want the theme to be dark by default depending on user's preference
+  // || (!('theme' in window.localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  if (theme === "dark") {
     document.documentElement.classList.add('dark')
   } else {
     document.documentElement.classList.remove('dark')
