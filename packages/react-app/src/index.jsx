@@ -2,7 +2,6 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom";
-import OldApp from "./OldApp";
 import App from "./App";
 import "./index.css";
 
