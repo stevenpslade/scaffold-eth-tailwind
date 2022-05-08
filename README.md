@@ -1,3 +1,21 @@
+# 🎨 Scaffold-ETH x Tailwind
+
+Scaffold-ETH uses [Ant Design](https://ant.design/) out of the box for it's design system. This is perfect for quick scaffolding and fast frontend experimentation. Scaffold-ETH can also be used with any UI framework, though.
+
+**Scaffold-ETH x Tailwind** uses [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework quickly becoming the default choice for new projects. It does not have ready-to-go components like modals and buttons but is packed with classes to make your own design system easily.
+
+**Scaffold-ETH x Tailwind** serves as a starting for using Tailwind with Scaffold-ETH and also doubles as showing what is needed to remove Ant Design from the project. Currently, **Scaffold-ETH x Tailwind** has a reskinned application shell, wallet modal, dev UI, account header, light/dark theme, address input, and ether input. These are enough reskinned components in Tailwind for a user to start building the rest of their app with Tailwind CSS!
+
+🔗 **Live Demo:** https://scaffold-eth-tailwind.surge.sh/
+
+<img width="1076" alt="image" src="https://user-images.githubusercontent.com/12888080/167281243-766fd04f-f928-400f-803d-6005c56d3bf9.png">
+
+<img width="355" alt="image" src="https://user-images.githubusercontent.com/12888080/167281254-5a32c37d-0256-479f-91eb-bdf8b335a6a3.png">
+
+<img width="406" alt="image" src="https://user-images.githubusercontent.com/12888080/167281267-1a7cb792-b273-423a-93f7-382d081a4700.png">
+
+<img width="543" alt="image" src="https://user-images.githubusercontent.com/12888080/167281270-84679051-ab48-42ef-9bf4-5e1d6e041932.png">
+
 # 🏗 Scaffold-ETH
 
 > everything you need to build on Ethereum! 🚀
