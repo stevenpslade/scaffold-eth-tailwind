@@ -8,9 +8,9 @@ Scaffold-ETH uses [Ant Design](https://ant.design/) out of the box for it's desi
 
 🔗 **Live Demo:** https://scaffold-eth-tailwind.surge.sh/
 
-<img width="1076" alt="image" src="https://user-images.githubusercontent.com/12888080/167281243-766fd04f-f928-400f-803d-6005c56d3bf9.png">
+<img width="1792" alt="image" src="https://user-images.githubusercontent.com/12888080/178321228-59d38958-a367-47ec-a571-2e6f58836cd9.png">
 
-<img width="355" alt="image" src="https://user-images.githubusercontent.com/12888080/167281254-5a32c37d-0256-479f-91eb-bdf8b335a6a3.png">
+<img width="543" alt="image" src="https://user-images.githubusercontent.com/12888080/178321312-84014873-7790-4cf4-a578-5119ccfb8802.png">
 
 <img width="406" alt="image" src="https://user-images.githubusercontent.com/12888080/167281267-1a7cb792-b273-423a-93f7-382d081a4700.png">
 
